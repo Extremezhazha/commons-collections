@@ -19,7 +19,7 @@ public class PartitionAddStringBagTest {
 
     @Test
     public void testAddNegativeStringBag() {
-        m_treebag.add(nonEmptyString, -1);
+        assertFalse(m_treebag.add(nonEmptyString, -1));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 0);
 
@@ -28,7 +28,7 @@ public class PartitionAddStringBagTest {
 
     @Test
     public void testAddZeroStringBag() {
-        m_treebag.add(nonEmptyString, 0);
+        assertFalse(m_treebag.add(nonEmptyString, 0));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 0);
 
@@ -37,7 +37,7 @@ public class PartitionAddStringBagTest {
 
     @Test
     public void testAddOneStringBag() {
-        m_treebag.add(nonEmptyString, 1);
+        assertTrue(m_treebag.add(nonEmptyString, 1));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 1);
 
@@ -46,9 +46,22 @@ public class PartitionAddStringBagTest {
 
     @Test
     public void testAddMultipleStringBag() {
-        m_treebag.add(nonEmptyString, 5);
+        assertTrue(m_treebag.add(nonEmptyString, 5));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 5);
+
+        assertFalse(m_treebag.add(nonEmptyString, 5));
+
+        assertTrue(m_treebag.uniqueSet().contains(nonEmptyString));
+    }
+
+    @Test
+    public void testAddNoChangeStringBag() {
+        assertTrue(m_treebag.add(nonEmptyString, 5));
+
+        assertEquals(m_treebag.getCount(nonEmptyString), 5);
+
+        assertFalse(m_treebag.add(nonEmptyString, 0));
 
         assertTrue(m_treebag.uniqueSet().contains(nonEmptyString));
     }

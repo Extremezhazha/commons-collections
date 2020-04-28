@@ -27,7 +27,7 @@ public class PartitionAddRemoveStringBagTest {
 
     @Test
     public void testRemoveNegativeStringBag() {
-        m_treebag.remove(nonEmptyString, -1);
+        assertFalse(m_treebag.remove(nonEmptyString, -1));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 5);
 
@@ -37,7 +37,7 @@ public class PartitionAddRemoveStringBagTest {
 
     @Test
     public void testRemoveZeroStringBag() {
-        m_treebag.remove(nonEmptyString, 0);
+        assertFalse(m_treebag.remove(nonEmptyString, 0));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 5);
 
@@ -47,7 +47,7 @@ public class PartitionAddRemoveStringBagTest {
 
     @Test
     public void testRemoveOneStringBag() {
-        m_treebag.remove(nonEmptyString, 1);
+        assertTrue(m_treebag.remove(nonEmptyString, 1));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 4);
 
@@ -57,7 +57,7 @@ public class PartitionAddRemoveStringBagTest {
 
     @Test
     public void testRemoveExactStringBag() {
-        m_treebag.remove(nonEmptyString, 5);
+        assertTrue(m_treebag.remove(nonEmptyString, 5));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 0);
 
@@ -67,11 +67,21 @@ public class PartitionAddRemoveStringBagTest {
 
     @Test
     public void testRemoveExtraStringBag() {
-        m_treebag.remove(nonEmptyString, 6);
+        assertTrue(m_treebag.remove(nonEmptyString, 6));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 0);
 
         assertFalse(m_treebag.uniqueSet().contains(nonEmptyString));
 
+    }
+
+    @Test
+    public void testNonExistZeroStringBag() {
+        assertFalse(m_treebag.remove("", 0));
+    }
+
+    @Test
+    public void testNonExistMultipleStringBag() {
+        assertFalse(m_treebag.remove("", 6));
     }
 }
