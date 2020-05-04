@@ -71,6 +71,8 @@ public class FSMStateTreeBagTest {
     public void testAtq1() {
         m_treebag.add("string content", 10);
         isAtq1(m_treebag);
+        assertEquals(m_treebag.getCount(""), 0);
+        assertEquals(m_treebag.getCount("string content"), 10);
     }
 
     @Test
@@ -78,5 +80,8 @@ public class FSMStateTreeBagTest {
         m_treebag.add("string content", 10);
         m_treebag.add("string content 1", 10);
         isAtqn(m_treebag);
+        assertEquals(m_treebag.getCount(""), 0);
+        assertEquals(m_treebag.getCount("string content"), 10);
+        assertEquals(m_treebag.getCount("string content 1"), 10);
     }
 }
