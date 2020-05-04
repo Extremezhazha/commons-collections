@@ -24,21 +24,14 @@ public class PartitionEmptyStringBagTest {
 
     @Test
     public void testOneEmptyStringBag() {
-        m_treebag.add(emptyString);
+        assertTrue(m_treebag.add(emptyString));
         assertEquals(m_treebag.getCount(emptyString), 1);
         assertTrue(m_treebag.uniqueSet().contains(emptyString));
-
-        String nonEmptyString = "string content";
-
-        assertEquals(m_treebag.getCount(nonEmptyString), 0);
-
-        assertFalse(m_treebag.uniqueSet().contains(nonEmptyString));
-
     }
 
     @Test
     public void testZeroNonEmptyStringBag() {
-        m_treebag.add(emptyString);
+        assertTrue(m_treebag.add(emptyString));
         assertEquals(m_treebag.getCount(emptyString), 1);
         assertTrue(m_treebag.uniqueSet().contains(emptyString));
 

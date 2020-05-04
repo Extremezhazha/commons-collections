@@ -49,10 +49,6 @@ public class PartitionAddStringBagTest {
         assertTrue(m_treebag.add(nonEmptyString, 5));
 
         assertEquals(m_treebag.getCount(nonEmptyString), 5);
-
-        assertFalse(m_treebag.add(nonEmptyString, 5));
-
-        assertTrue(m_treebag.uniqueSet().contains(nonEmptyString));
     }
 
     @Test
@@ -62,6 +58,10 @@ public class PartitionAddStringBagTest {
         assertEquals(m_treebag.getCount(nonEmptyString), 5);
 
         assertFalse(m_treebag.add(nonEmptyString, 0));
+
+        assertTrue(m_treebag.uniqueSet().contains(nonEmptyString));
+
+        assertFalse(m_treebag.add(nonEmptyString, 5));
 
         assertTrue(m_treebag.uniqueSet().contains(nonEmptyString));
     }
