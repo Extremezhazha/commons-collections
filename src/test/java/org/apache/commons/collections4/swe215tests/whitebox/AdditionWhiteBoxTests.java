@@ -39,9 +39,13 @@ public class AdditionWhiteBoxTests {
         Bag<String> stringBag = new TreeBag<>(stringSet);
 
         Bag<String> stringSubsetBag = new TreeBag<>();
+        stringSubsetBag.add("String 1", 1);
+        stringSubsetBag.add("String 2", 1);
         stringSubsetBag.add("String 4", 1);
 
         assertTrue(stringBag.retainAll(stringSubsetBag));
+
+        assertEquals(2, stringBag.uniqueSet().size());
         assertFalse(stringBag.retainAll(stringSubsetBag));
     }
 
