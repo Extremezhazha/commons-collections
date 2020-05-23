@@ -83,7 +83,7 @@ public abstract class AbstractAvailableLocalesTest {
     @Rule
     public final SetDefaultLocaleTestRule rule;
 
-    public AbstractAvailableLocalesTest(final Locale locale)  {
+    public AbstractAvailableLocalesTest(final Locale locale) {
         super();
         this.locale = locale;
         this.rule = new SetDefaultLocaleTestRule(locale);

@@ -23,7 +23,6 @@ import org.apache.commons.collections4.bidimap.TreeBidiMap;
 import org.apache.commons.collections4.iterators.EntrySetMapIterator;
 import org.apache.commons.collections4.map.FixedSizeMap;
 import org.apache.commons.collections4.map.UnmodifiableMap;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
@@ -122,7 +121,7 @@ public class AdditionWhiteBoxTests {
         assertFalse(combinedPredicateAllFalseNullSet.evaluate(""));
     }
 
-    private static <E> SetUtils.SetView<E> plainSetView(Set<E> originalSet){
+    private static <E> SetUtils.SetView<E> plainSetView(Set<E> originalSet) {
         return new SetUtils.SetView<E>() {
             @Override
             protected Iterator<E> createIterator() {
@@ -195,7 +194,7 @@ public class AdditionWhiteBoxTests {
         stringMap.put("String 3", "Value 3");
 
         try {
-           stringFixedSizeMap.putAll(stringMap);
+            stringFixedSizeMap.putAll(stringMap);
         } catch (Exception e) {
             assertTrue(e instanceof IllegalArgumentException);
         }

@@ -72,8 +72,9 @@ public class FSMStateTreeBagTest {
         while (it.hasNext()) {
             String curentElement = it.next();
             assertTrue(uniqueSet.contains(curentElement));
-            if (!curentElement.equals(firstValue))
+            if (!curentElement.equals(firstValue)) {
                 neqCount++;
+            }
         }
         assertNotEquals(neqCount, 0);
     }

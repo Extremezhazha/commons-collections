@@ -16,7 +16,6 @@
  */
 package org.apache.commons.collections4.swe215tests.partition;
 
-import org.apache.commons.collections4.Bag;
 import org.apache.commons.collections4.bag.TreeBag;
 import org.junit.Before;
 import org.junit.Test;
