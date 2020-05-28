@@ -82,9 +82,9 @@ public class MockingTest {
                 new TreeMap<>(),
                 (Factory) () -> {
                     try {
-                        Constructor<?> modifiableIntConstructor = AbstractMapBag.class.getDeclaredClasses()[0].getDeclaredConstructor(int.class);
-                        modifiableIntConstructor.setAccessible(true);
-                        return modifiableIntConstructor.newInstance(0);
+                        Constructor<?> mutableIntegerConstructor = AbstractMapBag.class.getDeclaredClasses()[0].getDeclaredConstructor(int.class);
+                        mutableIntegerConstructor.setAccessible(true);
+                        return mutableIntegerConstructor.newInstance(0);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -107,9 +107,9 @@ public class MockingTest {
         MockableString str3 = new MockableString("3");
         MockableString str2 = new MockableString("2");
 
-        Constructor<?> modifiableIntConstructor = AbstractMapBag.class.getDeclaredClasses()[0].getDeclaredConstructor(int.class);
-        modifiableIntConstructor.setAccessible(true);
-        when(spyMap.get(str3)).thenReturn(modifiableIntConstructor.newInstance(3));
+        Constructor<?> mutableIntegerConstructor = AbstractMapBag.class.getDeclaredClasses()[0].getDeclaredConstructor(int.class);
+        mutableIntegerConstructor.setAccessible(true);
+        when(spyMap.get(str3)).thenReturn(mutableIntegerConstructor.newInstance(3));
 
         MockableString str1 = spy(new MockableString("1"));
         stringBag.add(str1);
