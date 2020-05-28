@@ -105,7 +105,7 @@ public class MockingTest {
         TreeMap spyMap = spy(new TreeMap<>());
         Bag<MockableString> stringBag = spy(new SortedMapBag<>(spyMap));
         MockableString str3 = new MockableString("3");
-        MockableString str2 = new MockableString("2");
+        MockableString str2 = spy(new MockableString("2"));
 
         Constructor<?> mutableIntegerConstructor = AbstractMapBag.class.getDeclaredClasses()[0].getDeclaredConstructor(int.class);
         mutableIntegerConstructor.setAccessible(true);
@@ -115,6 +115,9 @@ public class MockingTest {
         stringBag.add(str1);
         stringBag.add(str2);
         stringBag.add(str2);
+
+        verify(str2, atLeastOnce()).compareTo(str1);
+        verify(str2, atLeastOnce()).compareTo(str2);
 
         assertEquals(1, stringBag.getCount(str1));
         assertEquals(2, stringBag.getCount(str2));
